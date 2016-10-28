@@ -44,6 +44,8 @@
     <TypeScriptCompile Include="menu\menu.ts" />
     <TypeScriptCompile Include="onlineplay\game\onlineplay.ts" />
     <TypeScriptCompile Include="onlineplay\onlineGameMenu.ts" />
+    <TypeScriptCompile Include="preloader\preloader-bar.ts" />
+    <TypeScriptCompile Include="preloader\preloader.ts" />
     <TypeScriptCompile Include="quickplay\quickplay.ts" />
   </ItemGroup>
   <ItemGroup>
