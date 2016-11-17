@@ -20,7 +20,7 @@ namespace MpCheckers.State {
         }
 
         playGame(event) {
-            event.game.state.start('quickgame', true);
+            event.game.state.start('quickplaygame', true);
         }
     }
 }

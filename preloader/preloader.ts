@@ -23,7 +23,7 @@ namespace MpCheckers.State {
 
             // scaling options
             // this makes it scale to the screen
-            this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+            this.scale.scaleMode = Phaser.ScaleManager.NO_SCALE;
             tween.onComplete.add(this.startGame, this);
         }
 

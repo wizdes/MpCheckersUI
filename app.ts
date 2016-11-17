@@ -10,6 +10,7 @@
 
             this.state.add('quickplaygame', State.QuickPlayGame);
             this.state.add('menu', State.Menu);
+            this.state.add('preloader', State.Preloader, true);
         }
     }
 }

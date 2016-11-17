@@ -28,7 +28,7 @@ var MpCheckers;
                 this.game.add.text(500, 200, "EUCHRE!", { font: '60px dimboregular', fill: '#000' });
                 // scaling options
                 // this makes it scale to the screen
-                this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+                this.scale.scaleMode = Phaser.ScaleManager.NO_SCALE;
                 tween.onComplete.add(this.startGame, this);
             };
             Preloader.prototype.startGame = function () {
