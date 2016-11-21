@@ -32,7 +32,6 @@
     <Content Include="index.html" />
     <Content Include="todoList.txt" />
     <Content Include="web.config" />
-    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />

@@ -1,7 +1,9 @@
 ﻿<Properties StartupConfiguration="{8AD42F6E-7EE3-410A-930E-F99DA69221B2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="app.ts">
+  <MonoDevelop.Ide.Workbench ActiveDocument="quickplay/quickplay.ts">
     <Files>
       <File FileName="app.ts" Line="16" Column="2" />
+      <File FileName="quickplay/quickplay.ts" Line="23" Column="11" />
+      <File FileName="preloader/preloader.ts" Line="12" Column="74" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

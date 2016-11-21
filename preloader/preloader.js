@@ -17,8 +17,8 @@ var MpCheckers;
                 this.loadingBar = new MpCheckers.Entity.PreloadBar(this.game);
                 this.load.image("black", "assets/black.png");
                 this.load.image("white", "assets/white.png");
-                this.load.spritesheet("wood", "assets/wood.png", 36, 36);
-                this.load.spritesheet("checker", "assets/checker.png", 36, 36);
+                this.load.spritesheet("wood", "assets/wood.png", 32, 32);
+                this.load.spritesheet("checker", "assets/checker.png", 32, 32);
             };
             Preloader.prototype.create = function () {
                 this.loadingBar.setFillPercent(100);

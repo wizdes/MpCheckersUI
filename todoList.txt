@@ -1,33 +1,45 @@
-﻿#1) add a HUD screen
-#2) move the cards down
-#2) pipe all the data through that
-#3) Test out the app
-#4) implement pauses
-#5) messages for the cards that the players make
-#4.5) change card movement time
-#5) Add score
-#6) add selected trump suit
+﻿1) draw the border
+2) draw the checker pieces
+3) add input logic 
+4) add a logical representation for "image with this space" and a "clicked here callback"
+5) extend this logical representation for each board piece as well
+6) create the two game states (User_CheckerPiece_Input, User_BoardPiece_Input)
+7) reject click here callback logic if it's not in the right state
+8) apply the right image move if the BoardPiece_Input was properly done
+9) E2E test with all checker pieces
+ 
+=== milestone 1 ===
 
-# <<test run through>> 2:30?
+1) animation logic per checkers piece movement
 
-#5) fix the scoring
-#7) Add a menu/pause button to go back
-#9) Add user name to the main game screen
-#10) Win and lose conditions
-	
+=== milestone 2 ===
 
-9 AM
-<eat breakfast>
-<polish>
+build the multiplayer users/room experience
 
-#1) Update the graphics
-#a) pick up, pass, choose, suit
-#b) background color
-#d) fontb
+=== milestone 3 ===
 
-<<test run through>>
-//remove test code
+build the multiplayer checkers movement experience
 
-#2) change the title screen
-#3) add the credits
-4) add the instructions
+=== milestone 4 ===
+
+build the checkers game logic
+
+=== core code complete ===
+
+Additional features:
+1) Settings page
+2) First class landing (preload) page
+3) Clean up the title page
+4) Clean up the game page (give a user hint for the states)
+
+=== Ship It! ===
+
+
+Goals:
+1) Board game basic UI framework
+2) Do the first class landing page
+
+Future goals:
+1) Animation side page
+2) more sprites and logic
+3) first class title page (with animations)
