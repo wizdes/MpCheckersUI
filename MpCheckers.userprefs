@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{8AD42F6E-7EE3-410A-930E-F99DA69221B2}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="app.ts">
+    <Files>
+      <File FileName="app.ts" Line="16" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MpCheckers PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>
