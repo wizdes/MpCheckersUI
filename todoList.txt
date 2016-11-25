@@ -1,6 +1,7 @@
-﻿1) draw the border
+1) draw the border
 2) draw the checker pieces
 3) add input logic 
+3.5) Create an MVC model 
 4) add a logical representation for "image with this space" and a "clicked here callback"
 5) extend this logical representation for each board piece as well
 6) create the two game states (User_CheckerPiece_Input, User_BoardPiece_Input)
