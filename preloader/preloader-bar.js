@@ -28,3 +28,4 @@ var MpCheckers;
         Entity.PreloadBar = PreloadBar;
     })(Entity = MpCheckers.Entity || (MpCheckers.Entity = {}));
 })(MpCheckers || (MpCheckers = {}));
+//# sourceMappingURL=preloader-bar.js.map
