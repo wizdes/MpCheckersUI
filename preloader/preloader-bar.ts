@@ -1,5 +1,5 @@
 ﻿/// <reference path="../app.ts" />
-namespace MpCheckers.Entity {
+namespace Entity {
     export class PreloadBar {
         game: MpCheckers.MainGame;
         width: number;

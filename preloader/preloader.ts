@@ -1,5 +1,5 @@
 ﻿/// <reference path="../app.ts" />
-namespace MpCheckers.State {
+namespace State {
     export class Preloader extends Phaser.State {
         loadingBar: Entity.PreloadBar;
 

@@ -1,5 +1,5 @@
 ﻿/// <reference path="../app.ts" />
-namespace MpCheckers.State {
+namespace State {
     export class Menu extends Phaser.State {
 
         preload() {
@@ -10,7 +10,7 @@ namespace MpCheckers.State {
             this.game.stage.backgroundColor = '#5F9C73';
             // how to set background image?
 
-            this.game.add.text(260, 160, "EUCHRE!", { font: '140px dimboregular', fill: '#000' });
+            this.game.add.text(260, 160, "Checkers!", { font: '140px dimboregular', fill: '#000' });
 
             var startLabel = this.game.add.text(570, 700, "Start", { font: '55px dimboregular', fill: '#000' });
             startLabel.inputEnabled = true;

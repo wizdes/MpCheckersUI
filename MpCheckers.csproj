@@ -39,14 +39,15 @@
     <TypeScriptCompile Include="dep\phaser.d.ts" />
     <TypeScriptCompile Include="dep\pixi.d.ts" />
     <TypeScriptCompile Include="game\checkersModel.ts" />
-    <TypeScriptCompile Include="game\viewProvider.ts" />
-    <TypeScriptCompile Include="input\input.ts" />
+    <TypeScriptCompile Include="game\gameStateController.ts" />
+    <TypeScriptCompile Include="input\checkersInput.ts" />
     <TypeScriptCompile Include="menu\menu.ts" />
     <TypeScriptCompile Include="onlineplay\game\onlineplay.ts" />
     <TypeScriptCompile Include="onlineplay\onlineGameMenu.ts" />
     <TypeScriptCompile Include="preloader\preloader-bar.ts" />
     <TypeScriptCompile Include="preloader\preloader.ts" />
     <TypeScriptCompile Include="quickplay\quickplay.ts" />
+    <TypeScriptCompile Include="view\gameView.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.Debug.config">

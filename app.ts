@@ -1,4 +1,5 @@
-﻿namespace MpCheckers {
+﻿/// <reference path="quickplay/quickplay.ts" />
+namespace MpCheckers {
     export class MainGame extends Phaser.Game {
 
         constructor() {
