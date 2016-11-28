@@ -68,8 +68,11 @@ var gameView;
                 sprite.frame = 4;
                 sprite.scale.setTo(this.boardScale, this.boardScale);
                 sprite.inputEnabled = true;
+                // TODO: keep the sprites in memory, and have an interface from gameView.ts to access the sprites
+                // inside the input class, reference this interface and assign the handleUserInput
+                // to each of the sprite's events
                 sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
-                    pieceIndex: new checkersModel.Checker(i, checkersModel.CheckerColor.Red),
+                    pieceIndex: new checkersModel.Checker(i, checkersModel.CheckerColor.White),
                     game: this.game
                 });
             }
@@ -78,6 +81,10 @@ var gameView;
                 var sprite = this.game.add.sprite(this.boardStartX + (boardCoord[0]) * 31 * this.boardScale, this.boardStartY + (boardCoord[1]) * 31 * this.boardScale, 'checker');
                 sprite.frame = 5;
                 sprite.scale.setTo(this.boardScale, this.boardScale);
+                sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
+                    pieceIndex: new checkersModel.Checker(i, checkersModel.CheckerColor.Red),
+                    game: this.game
+                });
             }
         };
         mainGameView.prototype.getBoardCoord = function (position) {
@@ -87,4 +94,3 @@ var gameView;
     }());
     gameView.mainGameView = mainGameView;
 })(gameView || (gameView = {}));
-//# sourceMappingURL=gameView.js.map

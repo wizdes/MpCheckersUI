@@ -13,4 +13,15 @@
             this.color = color;
         }
     }
+
+    export class CheckersActionBase{
+    	checkerPiece : Checker;
+    	nextActionBase : CheckersActionBase;
+    }
+
+
+    export class CheckersActionMove extends CheckersActionBase{
+    	initPosition: number;
+    	finalPosition: number;
+    }
 }
