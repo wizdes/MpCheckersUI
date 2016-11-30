@@ -1,10 +1,10 @@
 ﻿module CheckersInput {
     export class UserInput {
         game;
-        pieceIndex;
+        clickedElt;
 
         handleUserInput() {
-
+            this.game.AddAction(this.game.state.GetActionApplyStateChange(this));
         }
     }
 }

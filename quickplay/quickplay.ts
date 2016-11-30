@@ -1,10 +1,12 @@
 ﻿/// <reference path="../view/gameView.ts"/>
 /// <reference path="../input/checkersInput.ts" />
 /// <reference path="../app.ts" />
+/// <reference path="../game/gameStateController.ts" />
 namespace State {
     export class QuickPlayGame extends Phaser.State {
         view: gameView.mainGameView;
         userInput: CheckersInput.UserInput;
+        state: GameStateController.QuickGameState; 
 
         constructor() {
             super();
@@ -20,6 +22,10 @@ namespace State {
             if (this.view.isPaused) {
 
             }
+        }
+
+        AddAction(action) {
+            this.view.handleAction(action);
         }
     }
 }

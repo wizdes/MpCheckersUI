@@ -72,7 +72,7 @@ var gameView;
                 // inside the input class, reference this interface and assign the handleUserInput
                 // to each of the sprite's events
                 sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
-                    pieceIndex: new checkersModel.Checker(i, checkersModel.CheckerColor.White),
+                    clickedElt: new checkersModel.Checker(i, checkersModel.CheckerColor.White, checkersModel.ElementType.CheckPiece),
                     game: this.game
                 });
             }
@@ -81,8 +81,9 @@ var gameView;
                 var sprite = this.game.add.sprite(this.boardStartX + (boardCoord[0]) * 31 * this.boardScale, this.boardStartY + (boardCoord[1]) * 31 * this.boardScale, 'checker');
                 sprite.frame = 5;
                 sprite.scale.setTo(this.boardScale, this.boardScale);
+                sprite.inputEnabled = true;
                 sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
-                    pieceIndex: new checkersModel.Checker(i, checkersModel.CheckerColor.Red),
+                    clickedElt: new checkersModel.Checker(i, checkersModel.CheckerColor.Red, checkersModel.ElementType.CheckPiece),
                     game: this.game
                 });
             }
@@ -90,7 +91,24 @@ var gameView;
         mainGameView.prototype.getBoardCoord = function (position) {
             return [position % 8, Math.floor(position / 8)];
         };
+        mainGameView.prototype.handleAction = function (action) {
+            if (action instanceof checkersModel.CheckersActionHighlightMove) {
+                var highlightAction = action;
+                for (var i = 0; i < highlightAction.boardElementsToHighlight.length; i++) {
+                    var boardCoord = this.getBoardCoord(highlightAction.boardElementsToHighlight[i]);
+                    var sprite = this.game.add.sprite(this.boardStartX + (boardCoord[0]) * 31 * this.boardScale, this.boardStartY + (boardCoord[1]) * 31 * this.boardScale, 'wood');
+                    sprite.frame = 8;
+                    sprite.scale.setTo(this.boardScale, this.boardScale);
+                    sprite.inputEnabled = true;
+                    sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
+                        clickedElt: new checkersModel.Checker(highlightAction.boardElementsToHighlight[i], checkersModel.CheckerColor.None, checkersModel.ElementType.BoardPiece),
+                        game: this.game
+                    });
+                }
+            }
+        };
         return mainGameView;
     }());
     gameView.mainGameView = mainGameView;
 })(gameView || (gameView = {}));
+//# sourceMappingURL=gameView.js.map

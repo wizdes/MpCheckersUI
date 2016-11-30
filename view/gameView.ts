@@ -122,7 +122,7 @@ namespace gameView {
                 // inside the input class, reference this interface and assign the handleUserInput
                 // to each of the sprite's events
                 sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
-                    pieceIndex: new checkersModel.Checker(i, checkersModel.CheckerColor.White),
+                    clickedElt: new checkersModel.Checker(i, checkersModel.CheckerColor.White, checkersModel.ElementType.CheckPiece),
                     game: this.game
                 });
             }
@@ -135,8 +135,9 @@ namespace gameView {
                     'checker');
                 sprite.frame = 5;
                 sprite.scale.setTo(this.boardScale, this.boardScale);
+                sprite.inputEnabled = true;
                 sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
-                    pieceIndex: new checkersModel.Checker(i, checkersModel.CheckerColor.Red),
+                    clickedElt: new checkersModel.Checker(i, checkersModel.CheckerColor.Red, checkersModel.ElementType.CheckPiece),
                     game: this.game
                 });
             }
@@ -144,6 +145,27 @@ namespace gameView {
 
         getBoardCoord(position: number) {
             return [position % 8, Math.floor(position / 8)];
+        }
+
+        handleAction(action: checkersModel.CheckersActionBase) {
+            if (action instanceof checkersModel.CheckersActionHighlightMove) {
+                let highlightAction = action as checkersModel.CheckersActionHighlightMove;
+                for (let i = 0; i < highlightAction.boardElementsToHighlight.length; i++) {
+                    let boardCoord = this.getBoardCoord(highlightAction.boardElementsToHighlight[i]);
+                    let sprite = this.game.add.sprite(
+                        this.boardStartX + (boardCoord[0]) * 31 * this.boardScale,
+                        this.boardStartY + (boardCoord[1]) * 31 * this.boardScale,
+                        'wood');
+                    sprite.frame = 8;
+                    sprite.scale.setTo(this.boardScale, this.boardScale);
+                    sprite.inputEnabled = true;
+                    sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
+                        clickedElt: new checkersModel.Checker(highlightAction.boardElementsToHighlight[i], checkersModel.CheckerColor.None, checkersModel.ElementType.BoardPiece),
+                        game: this.game
+                    });
+
+                }
+            }
         }
 
         private boardScale: number;
