@@ -88,11 +88,14 @@ var gameView;
                 });
             }
         };
+        // gets a Tuple of 'x', 'y'
         mainGameView.prototype.getBoardCoord = function (position) {
             return [position % 8, Math.floor(position / 8)];
         };
         mainGameView.prototype.handleAction = function (action) {
-            if (action instanceof checkersModel.CheckersActionHighlightMove) {
+            if (action instanceof checkersModel.CheckersEmptyMove) {
+            }
+            else if (action instanceof checkersModel.CheckersActionHighlightMove) {
                 var highlightAction = action;
                 for (var i = 0; i < highlightAction.boardElementsToHighlight.length; i++) {
                     var boardCoord = this.getBoardCoord(highlightAction.boardElementsToHighlight[i]);
@@ -111,4 +114,3 @@ var gameView;
     }());
     gameView.mainGameView = mainGameView;
 })(gameView || (gameView = {}));
-//# sourceMappingURL=gameView.js.map

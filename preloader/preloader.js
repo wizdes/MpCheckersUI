@@ -39,4 +39,3 @@ var State;
     }(Phaser.State));
     State.Preloader = Preloader;
 })(State || (State = {}));
-//# sourceMappingURL=preloader.js.map

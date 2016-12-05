@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{8AD42F6E-7EE3-410A-930E-F99DA69221B2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="quickplay/quickplay.ts">
+  <MonoDevelop.Ide.Workbench ActiveDocument="view/gameView.ts">
     <Files>
-      <File FileName="quickplay/quickplay.ts" Line="15" Column="19" />
+      <File FileName="quickplay/quickplay.ts" Line="13" Column="39" />
       <File FileName="preloader/preloader.ts" Line="1" Column="1" />
-      <File FileName="view/gameView.ts" Line="117" Column="32" />
+      <File FileName="view/gameView.ts" Line="146" Column="36" />
       <File FileName="game/gameStateController.ts" Line="1" Column="1" />
-      <File FileName="game/checkersModel.ts" Line="1" Column="1" />
+      <File FileName="game/checkersModel.ts" Line="47" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

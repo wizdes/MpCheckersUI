@@ -143,12 +143,16 @@ namespace gameView {
             }
         }
 
+        // gets a Tuple of 'x', 'y'
         getBoardCoord(position: number) {
             return [position % 8, Math.floor(position / 8)];
         }
 
         handleAction(action: checkersModel.CheckersActionBase) {
-            if (action instanceof checkersModel.CheckersActionHighlightMove) {
+        	if(action instanceof checkersModel.CheckersEmptyMove){
+
+        	}
+            else if (action instanceof checkersModel.CheckersActionHighlightMove) {
                 let highlightAction = action as checkersModel.CheckersActionHighlightMove;
                 for (let i = 0; i < highlightAction.boardElementsToHighlight.length; i++) {
                     let boardCoord = this.getBoardCoord(highlightAction.boardElementsToHighlight[i]);
