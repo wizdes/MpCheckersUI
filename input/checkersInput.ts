@@ -4,7 +4,7 @@
         clickedElt;
 
         handleUserInput() {
-            this.game.AddAction(this.game.state.GetActionApplyStateChange(this));
+            this.game.AddAction(this.game.gameState.GetActionApplyStateChange(this));
         }
     }
 }

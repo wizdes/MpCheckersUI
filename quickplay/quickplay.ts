@@ -6,12 +6,13 @@ namespace State {
     export class QuickPlayGame extends Phaser.State {
         view: gameView.mainGameView;
         userInput: CheckersInput.UserInput;
-        state: GameStateController.QuickGameState; 
+        gameState: GameStateController.QuickGameState; 
 
         constructor() {
             super();
             this.view = new gameView.mainGameView(this);
             this.userInput = new CheckersInput.UserInput();
+            this.gameState = new GameStateController.QuickGameState();
         }
 
         create() {

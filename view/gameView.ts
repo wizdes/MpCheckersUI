@@ -175,6 +175,5 @@ namespace gameView {
         private boardScale: number;
         private boardStartX: number;
         private boardStartY: number;
-
     }
 }
