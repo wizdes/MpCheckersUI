@@ -3,7 +3,7 @@ Thumbs.db
 ehthumbs.db
 *.js.map
 app.js
-*.prefs
+*prefs
 
 # Folder config file
 Desktop.ini
