@@ -72,7 +72,7 @@ var gameView;
                 // inside the input class, reference this interface and assign the handleUserInput
                 // to each of the sprite's events
                 sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
-                    clickedElt: new checkersModel.Checker(i, checkersModel.CheckerColor.White, checkersModel.ElementType.CheckPiece),
+                    clickedElt: new checkersModel.Checker(topList[i], checkersModel.CheckerColor.White, checkersModel.ElementType.CheckPiece),
                     game: this.game
                 });
             }
@@ -83,7 +83,7 @@ var gameView;
                 sprite.scale.setTo(this.boardScale, this.boardScale);
                 sprite.inputEnabled = true;
                 sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
-                    clickedElt: new checkersModel.Checker(i, checkersModel.CheckerColor.Red, checkersModel.ElementType.CheckPiece),
+                    clickedElt: new checkersModel.Checker(bottomList[i], checkersModel.CheckerColor.Red, checkersModel.ElementType.CheckPiece),
                     game: this.game
                 });
             }

@@ -29,7 +29,7 @@ module GameStateController {
                     action.nextActionBase = null;
                     action.boardElementsToHighlight = [];
                     action.boardElementsToHighlight.push(userInput.clickedElt.index - 7);
-                    action.boardElementsToHighlight.push(userInput.clickedElt.index - 7);
+                    action.boardElementsToHighlight.push(userInput.clickedElt.index - 9);
                     return action;
                 }
             }
