@@ -1,4 +1,5 @@
-﻿/// <reference path="../game/checkersModel.ts" />
+﻿/// <reference path="../dep/phaser.d.ts" />
+/// <reference path="../game/checkersModel.ts" />
 /// <reference path="../input/checkersInput.ts" />
 namespace gameView {
     export class mainGameView {
@@ -11,6 +12,7 @@ namespace gameView {
             this.boardStartY = 700;
             this.boardScale = 2.5;
             this.isPaused = false;
+            this.highlightedPieces = new Array<Phaser.Sprite>();
         }
 
         create() {
@@ -154,6 +156,14 @@ namespace gameView {
         	}
             else if (action instanceof checkersModel.CheckersActionHighlightMove) {
                 let highlightAction = action as checkersModel.CheckersActionHighlightMove;
+
+
+                while(this.highlightedPieces.length > 0){
+                	let spriteToRemove = this.highlightedPieces[0];
+                	this.highlightedPieces.splice(0,1);
+                	spriteToRemove.destroy();
+                }
+
                 for (let i = 0; i < highlightAction.boardElementsToHighlight.length; i++) {
                     let boardCoord = this.getBoardCoord(highlightAction.boardElementsToHighlight[i]);
                     let sprite = this.game.add.sprite(
@@ -167,9 +177,12 @@ namespace gameView {
                         clickedElt: new checkersModel.Checker(highlightAction.boardElementsToHighlight[i], checkersModel.CheckerColor.None, checkersModel.ElementType.BoardPiece),
                         game: this.game
                     });
+                    this.highlightedPieces.push(sprite);
                 }
             }
         }
+
+        private highlightedPieces: Phaser.Sprite[];
 
         private boardScale: number;
         private boardStartX: number;

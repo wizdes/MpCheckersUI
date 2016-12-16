@@ -1,3 +1,4 @@
+/// <reference path="../dep/phaser.d.ts" />
 /// <reference path="../game/checkersModel.ts" />
 /// <reference path="../input/checkersInput.ts" />
 var gameView;
@@ -9,6 +10,7 @@ var gameView;
             this.boardStartY = 700;
             this.boardScale = 2.5;
             this.isPaused = false;
+            this.highlightedPieces = new Array();
         }
         mainGameView.prototype.create = function () {
             this.drawBoard();
@@ -97,6 +99,11 @@ var gameView;
             }
             else if (action instanceof checkersModel.CheckersActionHighlightMove) {
                 var highlightAction = action;
+                while (this.highlightedPieces.length > 0) {
+                    var spriteToRemove = this.highlightedPieces[0];
+                    this.highlightedPieces.splice(0, 1);
+                    spriteToRemove.destroy();
+                }
                 for (var i = 0; i < highlightAction.boardElementsToHighlight.length; i++) {
                     var boardCoord = this.getBoardCoord(highlightAction.boardElementsToHighlight[i]);
                     var sprite = this.game.add.sprite(this.boardStartX + (boardCoord[0]) * 31 * this.boardScale, this.boardStartY + (boardCoord[1]) * 31 * this.boardScale, 'wood');
@@ -107,6 +114,7 @@ var gameView;
                         clickedElt: new checkersModel.Checker(highlightAction.boardElementsToHighlight[i], checkersModel.CheckerColor.None, checkersModel.ElementType.BoardPiece),
                         game: this.game
                     });
+                    this.highlightedPieces.push(sprite);
                 }
             }
         };

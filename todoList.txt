@@ -1,3 +1,11 @@
+3) Fix the sprite placements (side as well as edge calculation)
+3.5) Fix the sprite highlight for red and white
+
+4) Next part, when clicking on a placement, move the piece, and erase the placement.
+5) make sure this works for both sides.
+
+5) Then comes jumping.
+
 1) draw the border
 2) draw the checker pieces
 3) add input logic 
