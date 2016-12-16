@@ -15,7 +15,8 @@ module GameStateController {
     	}
 
         GetActionApplyStateChange(userInput: CheckersInput.UserInput) {
-            if (this.intGameState == quickplayState.OnUserInput) {
+            if (this.intGameState == quickplayState.OnUserInput ||
+            this.intGameState == quickplayState.OnUserSelectMove) {
                 return this.HandleOnUserInputState(userInput);
             }
         }

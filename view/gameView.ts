@@ -167,7 +167,6 @@ namespace gameView {
                         clickedElt: new checkersModel.Checker(highlightAction.boardElementsToHighlight[i], checkersModel.CheckerColor.None, checkersModel.ElementType.BoardPiece),
                         game: this.game
                     });
-
                 }
             }
         }
