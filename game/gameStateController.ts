@@ -5,13 +5,21 @@ module GameStateController {
         OnUserInput = 1,
         OnUserSelectMove,
     }
+
     export class QuickGameState {
     	checkerTurn : checkersModel.CheckerColor;
     	intGameState : quickplayState;
 
+    	nogoLeft: Array<number>;
+    	nogoRight: Array<number>;
+
+
     	constructor(){
     		this.checkerTurn = checkersModel.CheckerColor.Red;
     		this.intGameState = quickplayState.OnUserInput;
+    		this.nogoLeft = [8, 24, 40, 56];
+    		this.nogoRight = [7, 23, 31, 55];
+
     	}
 
         GetActionApplyStateChange(userInput: CheckersInput.UserInput) {
@@ -29,8 +37,14 @@ module GameStateController {
                     action.clickedElt = userInput.clickedElt;
                     action.nextActionBase = null;
                     action.boardElementsToHighlight = [];
-                    action.boardElementsToHighlight.push(userInput.clickedElt.index - 7);
-                    action.boardElementsToHighlight.push(userInput.clickedElt.index - 9);
+
+                    if(this.nogoRight.indexOf(userInput.clickedElt.index) == -1){
+                    	action.boardElementsToHighlight.push(userInput.clickedElt.index - 7);
+                   	}
+
+                    if(this.nogoLeft.indexOf(userInput.clickedElt.index) == -1){
+                    	action.boardElementsToHighlight.push(userInput.clickedElt.index - 9);
+                   	}
                     return action;
                 }
             }

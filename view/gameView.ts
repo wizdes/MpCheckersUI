@@ -8,8 +8,8 @@ namespace gameView {
 
         constructor(currentGame) {
             this.game = currentGame;
-            this.boardStartX = 170;
-            this.boardStartY = 700;
+            this.boardStartX = 100;
+            this.boardStartY = 300;
             this.boardScale = 2.5;
             this.isPaused = false;
             this.highlightedPieces = new Array<Phaser.Sprite>();
