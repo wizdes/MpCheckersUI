@@ -25,3 +25,4 @@ var Entity;
     }());
     Entity.PreloadBar = PreloadBar;
 })(Entity || (Entity = {}));
+//# sourceMappingURL=preloader-bar.js.map

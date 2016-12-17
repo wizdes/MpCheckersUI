@@ -20,13 +20,15 @@
 
     export class Checker{
         index;
+        highlightBoardPosition;
         color: CheckerColor;
         type : ElementType;
 
-        constructor(index, color, type) {
+        constructor(index, color, type, pos) {
             this.index = index;
             this.color = color;
             this.type = type;
+            this.highlightBoardPosition = pos;
         }
     }
 

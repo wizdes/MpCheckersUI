@@ -11,6 +11,7 @@ var gameView;
             this.boardScale = 2.5;
             this.isPaused = false;
             this.highlightedPieces = new Array();
+            this.checkersPieces = {};
         }
         mainGameView.prototype.create = function () {
             this.drawBoard();
@@ -74,9 +75,10 @@ var gameView;
                 // inside the input class, reference this interface and assign the handleUserInput
                 // to each of the sprite's events
                 sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
-                    clickedElt: new checkersModel.Checker(topList[i], checkersModel.CheckerColor.White, checkersModel.ElementType.CheckPiece),
+                    clickedElt: new checkersModel.Checker(i, checkersModel.CheckerColor.White, checkersModel.ElementType.CheckPiece, topList[i]),
                     game: this.game
                 });
+                this.checkersPieces[i] = sprite;
             }
             for (var i = 0; i < 12; i++) {
                 var boardCoord = this.getBoardCoord(bottomList[i]);
@@ -85,9 +87,10 @@ var gameView;
                 sprite.scale.setTo(this.boardScale, this.boardScale);
                 sprite.inputEnabled = true;
                 sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
-                    clickedElt: new checkersModel.Checker(bottomList[i], checkersModel.CheckerColor.Red, checkersModel.ElementType.CheckPiece),
+                    clickedElt: new checkersModel.Checker(12 + i, checkersModel.CheckerColor.Red, checkersModel.ElementType.CheckPiece, bottomList[i]),
                     game: this.game
                 });
+                this.checkersPieces[12 + i] = sprite;
             }
         };
         // gets a Tuple of 'x', 'y'
@@ -96,6 +99,26 @@ var gameView;
         };
         mainGameView.prototype.handleAction = function (action) {
             if (action instanceof checkersModel.CheckersEmptyMove) {
+            }
+            else if (action instanceof checkersModel.CheckersActionMove) {
+                var moveAction = action;
+                var sprite = this.checkersPieces[moveAction.clickedElt.index];
+                // might do this every turn
+                while (this.highlightedPieces.length > 0) {
+                    var spriteToRemove = this.highlightedPieces[0];
+                    this.highlightedPieces.splice(0, 1);
+                    spriteToRemove.destroy();
+                }
+                var boardCoord = this.getBoardCoord(moveAction.finalPosition);
+                sprite.x = this.boardStartX + (boardCoord[0]) * 31 * this.boardScale;
+                sprite.y = this.boardStartY + (boardCoord[1]) * 31 * this.boardScale;
+                sprite.events.onInputDown.removeAll();
+                sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
+                    clickedElt: new checkersModel.Checker(moveAction.clickedElt.index, moveAction.clickedElt.color, checkersModel.ElementType.CheckPiece, moveAction.finalPosition),
+                    game: this.game
+                });
+                this.checkersPieces[moveAction.finalPosition] = sprite;
+                delete this.checkersPieces[moveAction.initPosition];
             }
             else if (action instanceof checkersModel.CheckersActionHighlightMove) {
                 var highlightAction = action;
@@ -111,8 +134,9 @@ var gameView;
                     sprite.scale.setTo(this.boardScale, this.boardScale);
                     sprite.inputEnabled = true;
                     sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
-                        clickedElt: new checkersModel.Checker(highlightAction.boardElementsToHighlight[i], checkersModel.CheckerColor.None, checkersModel.ElementType.BoardPiece),
-                        game: this.game
+                        clickedElt: new checkersModel.Checker(highlightAction.clickedElt.index, highlightAction.clickedElt.color, checkersModel.ElementType.BoardPiece, highlightAction.boardElementsToHighlight[i]),
+                        game: this.game,
+                        refElt: highlightAction.clickedElt
                     });
                     this.highlightedPieces.push(sprite);
                 }
@@ -122,3 +146,4 @@ var gameView;
     }());
     gameView.mainGameView = mainGameView;
 })(gameView || (gameView = {}));
+//# sourceMappingURL=gameView.js.map

@@ -1,21 +1,12 @@
-3) Fix the sprite placements (side as well as edge calculation)
-3.5) Fix the sprite highlight for red and white
+1) refactor so the gameStateController has an idea where each piece is
+2) gameView shouldn't keep that, just a cannonical id to reference each thing
 
-4) Next part, when clicking on a placement, move the piece, and erase the placement.
-5) make sure this works for both sides.
+3) Unit collision
+4) jumping logic
 
-5) Then comes jumping.
+5) Turn control
 
-1) draw the border
-2) draw the checker pieces
-3) add input logic 
-3.5) Create an MVC model 
-4) add a logical representation for "image with this space" and a "clicked here callback"
-5) extend this logical representation for each board piece as well
-6) create the two game states (User_CheckerPiece_Input, User_BoardPiece_Input)
-7) reject click here callback logic if it's not in the right state
-8) apply the right image move if the BoardPiece_Input was properly done
-9) E2E test with all checker pieces
+6) Stretch goal: get double jumps complete?
  
 === milestone 1 ===
 
