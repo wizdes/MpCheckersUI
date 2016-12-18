@@ -55,35 +55,37 @@ module GameStateController {
 
                     let potentialEaten = [];
 
-                    if (this.nogoRight.indexOf(this.pieceMap[userInput.clickedElt.index]) == -1) {
+                    if (!this.isBorderPosition(this.pieceMap[userInput.clickedElt.index], "RIGHT")) {
                         let val = this.GetMove(userInput, "RIGHT", true);
-                        let isPotentialEaten = false;
-                        for (let i = 0; i < 24; i++) {
-                            if (this.pieceMap[i] == val) {
-                                isPotentialEaten = true;
-                                potentialEaten.push(i);
-                            }
-                        }
+                        let isPotentialEaten = this.hasPiece(val, potentialEaten);
 
                         if (!isPotentialEaten) {
                             action.boardElementsToHighlight.push(val);
                         }
                     }
 
-                    if (this.nogoLeft.indexOf(this.pieceMap[userInput.clickedElt.index]) == -1) {
+                    if (!this.isBorderPosition(this.pieceMap[userInput.clickedElt.index], "LEFT")) {
                         let val = this.GetMove(userInput, "LEFT", true);
-                        let isPotentialEaten = false;
-                        for (let i = 0; i < 24; i++) {
-                            if (this.pieceMap[i] == val) {
-                                isPotentialEaten = true;
-                                potentialEaten.push(i);
-                            }
-                        }
+                        let isPotentialEaten = this.hasPiece(val, potentialEaten);
 
                         if (!isPotentialEaten) {
                             action.boardElementsToHighlight.push(val);
                         }
                     }
+
+                    // do the potentialEaten logic
+                    for (let i = 0; i < potentialEaten.length; i++) {
+                        let beginPosition = this.pieceMap[userInput.clickedElt.index];
+                        let endPiecePosition = this.pieceMap[potentialEaten[i]];
+                        let diff = endPiecePosition - beginPosition;
+
+                        if (!this.isBorderPosition(endPiecePosition, "BOTH") &&
+                            !this.hasPiece(endPiecePosition + diff, null) &&
+                            this.isSameColor(userInput.clickedElt.color, potentialEaten[i])) {
+                            action.boardElementsToHighlight.push(endPiecePosition + diff);
+                        }
+                    }
+
                     return action;
                 }
             }
@@ -100,6 +102,55 @@ module GameStateController {
             }
 
             return new checkersModel.CheckersEmptyMove();
+        }
+
+        isBorderPosition(position: number, side: string) {
+            if (side == "LEFT" || side == "BOTH") {
+                if (this.nogoLeft.indexOf(position) == -1) {
+                    return false;
+                }
+
+                return true;
+            }
+            else if (side == "RIGHT" || side == "BOTH") {
+                if (this.nogoRight.indexOf(position) == -1) {
+                    return false;
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
+        isSameColor(color, index: number) {
+            let indexColor = this.getColorFromIndex(index);
+
+            if (color == indexColor) return true;
+
+            return false;
+        }
+
+        getColorFromIndex(index: number) {
+            if (index < 12) {
+                return checkersModel.CheckerColor.White;
+            }
+
+            return checkersModel.CheckerColor.Red;
+        }
+
+        hasPiece(position: number, potentialEaten) {
+            for (let i = 0; i < 24; i++) {
+                if (this.pieceMap[i] == position) {
+                    if (potentialEaten != null) {
+                        potentialEaten.push(i);
+                    }
+
+                    return true;
+                }
+            }
+
+            return true;
         }
 
         GetMove(userInput: CheckersInput.UserInput, movePosition: string, isForward: boolean) {
