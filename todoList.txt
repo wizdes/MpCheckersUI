@@ -1,9 +1,4 @@
-1) refactor so the gameStateController has an idea where each piece is
-2) gameView shouldn't keep that, just a cannonical id to reference each thing
-
-3) Unit collision
 4) jumping logic
-
 5) Turn control
 
 6) Stretch goal: get double jumps complete?

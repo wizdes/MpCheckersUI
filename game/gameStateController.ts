@@ -53,12 +53,36 @@ module GameStateController {
                     action.nextActionBase = null;
                     action.boardElementsToHighlight = [];
 
+                    let potentialEaten = [];
+
                     if (this.nogoRight.indexOf(this.pieceMap[userInput.clickedElt.index]) == -1) {
-                        action.boardElementsToHighlight.push(this.GetMove(userInput, "RIGHT", true));
+                        let val = this.GetMove(userInput, "RIGHT", true);
+                        let isPotentialEaten = false;
+                        for (let i = 0; i < 24; i++) {
+                            if (this.pieceMap[i] == val) {
+                                isPotentialEaten = true;
+                                potentialEaten.push(i);
+                            }
+                        }
+
+                        if (!isPotentialEaten) {
+                            action.boardElementsToHighlight.push(val);
+                        }
                     }
 
                     if (this.nogoLeft.indexOf(this.pieceMap[userInput.clickedElt.index]) == -1) {
-                        action.boardElementsToHighlight.push(this.GetMove(userInput, "LEFT", true));
+                        let val = this.GetMove(userInput, "LEFT", true);
+                        let isPotentialEaten = false;
+                        for (let i = 0; i < 24; i++) {
+                            if (this.pieceMap[i] == val) {
+                                isPotentialEaten = true;
+                                potentialEaten.push(i);
+                            }
+                        }
+
+                        if (!isPotentialEaten) {
+                            action.boardElementsToHighlight.push(val);
+                        }
                     }
                     return action;
                 }
