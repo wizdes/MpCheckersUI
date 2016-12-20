@@ -1,12 +1,3 @@
-4) jumping logic
-5) Turn control
-
-6) Stretch goal: get double jumps complete?
- 
-=== milestone 1 ===
-
-1) animation logic per checkers piece movement
-
 === milestone 2 ===
 
 build the multiplayer users/room experience
@@ -17,7 +8,7 @@ build the multiplayer checkers movement experience
 
 === milestone 4 ===
 
-build the checkers game logic
+round out the checkers game logic
 
 === core code complete ===
 
