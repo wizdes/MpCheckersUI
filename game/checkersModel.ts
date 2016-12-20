@@ -39,11 +39,13 @@
 
     export class CheckersActionMove extends CheckersActionBase{
     	initPosition: number;
-    	finalPosition: number;
+        finalPosition: number;
+        removePieceIndex: number;
     }
 
     export class CheckersActionHighlightMove extends CheckersActionBase {
         boardElementsToHighlight: number[];
+        capturedUnits;
     }
 
     export class CheckersEmptyMove extends CheckersActionBase {

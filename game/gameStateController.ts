@@ -81,9 +81,15 @@ module GameStateController {
 
                         if (!this.isBorderPosition(endPiecePosition, "BOTH") &&
                             !this.hasPiece(endPiecePosition + diff, null) &&
-                            this.isSameColor(userInput.clickedElt.color, potentialEaten[i])) {
+                            !this.isSameColor(userInput.clickedElt.color, potentialEaten[i])) {
                             action.boardElementsToHighlight.push(endPiecePosition + diff);
+                            if (action.capturedUnits == null) {
+                                action.capturedUnits = [];
+                            }
+
+                            action.capturedUnits.push([endPiecePosition + diff, potentialEaten[i]]);
                         }
+
                     }
 
                     return action;
@@ -96,6 +102,8 @@ module GameStateController {
                 action.nextActionBase = null;
                 action.initPosition = this.pieceMap[userInput.refElt.index];
                 action.finalPosition = userInput.clickedElt.highlightBoardPosition;
+                action.removePieceIndex = userInput.capturedUnit;
+                this.pieceMap[userInput.capturedUnit] = -1;
                 this.pieceMap[userInput.refElt.index] = userInput.clickedElt.highlightBoardPosition;
 
                 return action;
@@ -105,15 +113,22 @@ module GameStateController {
         }
 
         isBorderPosition(position: number, side: string) {
-            if (side == "LEFT" || side == "BOTH") {
+            if (side == "LEFT") {
                 if (this.nogoLeft.indexOf(position) == -1) {
                     return false;
                 }
 
                 return true;
             }
-            else if (side == "RIGHT" || side == "BOTH") {
+            else if (side == "RIGHT") {
                 if (this.nogoRight.indexOf(position) == -1) {
+                    return false;
+                }
+
+                return true;
+            }
+            else if (side == "BOTH") {
+                if (this.nogoRight.indexOf(position) == -1 && this.nogoLeft.indexOf(position) == -1) {
                     return false;
                 }
 
@@ -150,7 +165,7 @@ module GameStateController {
                 }
             }
 
-            return true;
+            return false;
         }
 
         GetMove(userInput: CheckersInput.UserInput, movePosition: string, isForward: boolean) {

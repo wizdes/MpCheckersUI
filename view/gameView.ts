@@ -184,6 +184,12 @@ namespace gameView {
                 this.checkersPieces[moveAction.finalPosition] = sprite;
 
                 delete this.checkersPieces[moveAction.initPosition];
+
+                if (moveAction.removePieceIndex != -1) {
+                    let removingSprite = this.checkersPieces[moveAction.removePieceIndex];
+                    removingSprite.x = -100;
+                    removingSprite.y = -100;
+                }
             }
             else if (action instanceof checkersModel.CheckersActionHighlightMove) {
                 let highlightAction = action as checkersModel.CheckersActionHighlightMove;
@@ -203,10 +209,21 @@ namespace gameView {
                     sprite.frame = 8;
                     sprite.scale.setTo(this.boardScale, this.boardScale);
                     sprite.inputEnabled = true;
+
+                    let capturedUnit = -1;
+                    if (highlightAction.capturedUnits != null) {
+                        for (let j = 0; j < highlightAction.capturedUnits.length; j++) {
+                            if (highlightAction.boardElementsToHighlight[i] == highlightAction.capturedUnits[j][0]) {
+                                capturedUnit = highlightAction.capturedUnits[j][1];
+                            }
+                        }
+                    }
+
                     sprite.events.onInputDown.add(this.game.userInput.handleUserInput, {
                         clickedElt: new checkersModel.Checker(highlightAction.clickedElt.index, highlightAction.clickedElt.color, checkersModel.ElementType.BoardPiece, highlightAction.boardElementsToHighlight[i]),
                         game: this.game,
-                        refElt: highlightAction.clickedElt
+                        refElt: highlightAction.clickedElt,
+                        capturedUnit: capturedUnit
                     });
                     this.highlightedPieces.push(sprite);
                 }

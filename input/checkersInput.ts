@@ -3,6 +3,7 @@
         game;
         clickedElt;
         refElt;
+        capturedUnit;
 
         handleUserInput() {
             this.game.AddAction(this.game.gameState.GetActionApplyStateChange(this));
